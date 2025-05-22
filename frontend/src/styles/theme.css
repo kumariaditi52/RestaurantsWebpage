@@ -1,0 +1,108 @@
+/* Global theme styles */
+.dark-mode {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Card styles */
+.ant-card.dark {
+  background-color: #374151;
+  color: #ffffff;
+  border-color: #4b5563;
+}
+
+.ant-card.dark .ant-card-head {
+  color: #ffffff;
+  border-color: #4b5563;
+}
+
+.ant-card.dark .ant-card-meta-title {
+  color: #ffffff;
+}
+
+.ant-card.dark .ant-card-meta-description {
+  color: #d1d5db;
+}
+
+/* Typography styles */
+.dark-mode .ant-typography {
+  color: #ffffff;
+}
+
+.dark-mode h1.ant-typography,
+.dark-mode h2.ant-typography,
+.dark-mode h3.ant-typography,
+.dark-mode h4.ant-typography,
+.dark-mode h5.ant-typography {
+  color: #ffffff;
+}
+
+.dark-mode .ant-typography-secondary {
+  color: #d1d5db;
+}
+
+/* Form styles */
+.dark-mode .ant-input,
+.dark-mode .ant-input-affix-wrapper,
+.dark-mode .ant-select-selector,
+.dark-mode .ant-input-number,
+.dark-mode .ant-picker,
+.dark-mode .ant-textarea {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+.dark-mode .ant-input::placeholder,
+.dark-mode .ant-textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Button styles */
+.dark-mode .ant-btn-default {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+.dark-mode .ant-btn-default:hover {
+  background-color: #4b5563;
+  border-color: #6b7280;
+}
+
+/* Menu styles */
+.dark-mode .ant-menu {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+.dark-mode .ant-menu-item {
+  color: #ffffff;
+}
+
+.dark-mode .ant-menu-item:hover {
+  background-color: #374151;
+}
+
+.dark-mode .ant-menu-item-selected {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* Divider styles */
+.dark-mode .ant-divider {
+  border-color: #4b5563;
+}
+
+/* Transition for all elements */
+.home-container,
+.about-container,
+.blog-container,
+.contact-container,
+.services-container,
+.ant-card,
+.ant-typography,
+.ant-input,
+.ant-btn,
+.ant-menu {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

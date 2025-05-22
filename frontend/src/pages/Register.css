@@ -1,0 +1,354 @@
+/* Register.css - Custom styles for the register page */
+
+.register-container {
+  max-width: 480px;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.register-container:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.register-container.dark {
+  background-color: #374151;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.register-title {
+  color: #3B82F6 !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.dark .register-title {
+  color: #60a5fa !important;
+}
+
+.register-subtitle {
+  color: #6B7280 !important;
+  font-size: 1rem !important;
+}
+
+.dark .register-subtitle {
+  color: #d1d5db !important;
+}
+
+.register-form .ant-form-item {
+  margin-bottom: 1.5rem;
+}
+
+.register-input {
+  border-radius: 8px !important;
+  height: 48px !important;
+  padding: 0.75rem 1rem !important;
+  border: 1px solid #E5E7EB !important;
+  transition: all 0.3s ease !important;
+}
+
+.register-input:hover {
+  border-color: #3B82F6 !important;
+}
+
+.dark .register-input {
+  background-color: #4B5563 !important;
+  border-color: #6B7280 !important;
+  color: #F9FAFB !important;
+}
+
+.dark .register-input:hover {
+  border-color: #60a5fa !important;
+}
+
+.dark .register-input .ant-input {
+  background-color: transparent !important;
+  color: #F9FAFB !important;
+}
+
+.dark .register-input .ant-input-password-icon {
+  color: #d1d5db !important;
+}
+
+.register-input:focus,
+.register-input-focused {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark .register-input:focus,
+.dark .register-input-focused {
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2) !important;
+}
+
+.register-input .ant-input {
+  height: 100% !important;
+}
+
+.register-input .ant-input-prefix {
+  color: #9CA3AF !important;
+  margin-right: 0.75rem !important;
+  font-size: 1.1rem !important;
+}
+
+.dark .register-input .ant-input-prefix {
+  color: #d1d5db !important;
+}
+
+.register-checkbox {
+  color: #6B7280 !important;
+}
+
+.register-checkbox:hover {
+  color: #3B82F6 !important;
+}
+
+.dark .register-checkbox {
+  color: #d1d5db !important;
+}
+
+.dark .register-checkbox:hover {
+  color: #60a5fa !important;
+}
+
+.register-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #3B82F6 !important;
+  border-color: #3B82F6 !important;
+}
+
+.dark .register-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #60a5fa !important;
+  border-color: #60a5fa !important;
+}
+
+.register-link {
+  color: #3B82F6 !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.register-link:hover {
+  color: #2563EB !important;
+  text-decoration: underline !important;
+}
+
+.dark .register-link {
+  color: #60a5fa !important;
+}
+
+.dark .register-link:hover {
+  color: #93c5fd !important;
+}
+
+.register-button {
+  width: 100% !important;
+  height: auto !important;
+  padding: 0.75rem 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  background: linear-gradient(to right, #3B82F6, #2563EB) !important;
+  border: none !important;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25) !important;
+  transition: all 0.3s ease !important;
+}
+
+.register-button:hover {
+  background: linear-gradient(to right, #2563EB, #1D4ED8) !important;
+  box-shadow: 0 6px 10px rgba(59, 130, 246, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.register-button:active {
+  transform: translateY(0) !important;
+}
+
+.dark .register-button {
+  background: linear-gradient(to right, #60a5fa, #3b82f6) !important;
+  box-shadow: 0 4px 6px rgba(96, 165, 250, 0.25) !important;
+}
+
+.dark .register-button:hover {
+  background: linear-gradient(to right, #3b82f6, #2563eb) !important;
+  box-shadow: 0 6px 10px rgba(96, 165, 250, 0.3) !important;
+}
+
+.register-divider {
+  color: #9CA3AF !important;
+  font-size: 0.9rem !important;
+  margin: 1.5rem 0 !important;
+}
+
+.dark .register-divider {
+  color: #d1d5db !important;
+  border-color: #6B7280 !important;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 48px !important;
+  padding: 0 1.5rem !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.google-button {
+  background-color: white !important;
+  color: #4B5563 !important;
+  border: 1px solid #E5E7EB !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.google-button:hover {
+  background-color: #F9FAFB !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.dark .google-button {
+  background-color: #4B5563 !important;
+  color: #F9FAFB !important;
+  border: 1px solid #6B7280 !important;
+}
+
+.dark .google-button:hover {
+  background-color: #374151 !important;
+}
+
+.facebook-button {
+  background-color: #1877F2 !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(24, 119, 242, 0.3) !important;
+}
+
+.facebook-button:hover {
+  background-color: #0C63D4 !important;
+  box-shadow: 0 4px 6px rgba(24, 119, 242, 0.25) !important;
+  transform: translateY(-2px) !important;
+}
+
+.dark .facebook-button {
+  background-color: #2563eb !important;
+  color: #F9FAFB !important;
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark .facebook-button:hover {
+  background-color: #1d4ed8 !important;
+}
+
+@media (max-width: 600px) {
+  .register-container {
+    max-width: 100%;
+    padding: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .register-header {
+    margin-bottom: 1rem;
+  }
+  .register-title {
+    font-size: 1.5rem !important;
+  }
+  .register-form .ant-form-item {
+    margin-bottom: 1rem;
+  }
+  .social-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .social-button {
+    width: 100% !important;
+    padding: 0.5rem 0 !important;
+  }
+}
+
+.register-error {
+  color: #ef4444 !important;
+  background: #fee2e2 !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 1rem !important;
+  margin-bottom: 1rem !important;
+  font-size: 0.95rem !important;
+  text-align: center !important;
+}
+
+.dark .register-error {
+  color: #fca5a5 !important;
+  background: #7f1d1d !important;
+}
+
+.register-footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: #6B7280;
+  font-size: 0.95rem;
+}
+
+.dark .register-footer {
+  color: #d1d5db;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility focus styles */
+.register-link:focus,
+.register-button:focus,
+.social-button:focus {
+  outline: 2px solid #3B82F6 !important;
+  outline-offset: 2px !important;
+}
+
+/* Hide default Ant Design password icon background in dark mode */
+.dark .ant-input-password-icon {
+  background: transparent !important;
+}

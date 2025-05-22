@@ -1,0 +1,83 @@
+/* Footer styles */
+.footer-section {
+  margin-bottom: 24px;
+}
+
+.social-icons {
+  margin-top: 16px;
+}
+
+.social-icon {
+  font-size: 20px;
+  margin-right: 16px;
+  transition: color 0.3s ease;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  transition: color 0.3s ease;
+}
+
+.opening-hours {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.opening-hours li {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.opening-hours .day {
+  font-weight: 500;
+}
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  margin-right: 8px;
+  margin-top: 4px;
+}
+
+.footer-bottom {
+  margin-top: 16px;
+}
+
+/* Dark mode styles */
+.full-footer.dark .ant-typography,
+.simple-footer.dark .ant-typography {
+  color: #ffffff;
+}
+
+.full-footer.dark h4.ant-typography,
+.simple-footer.dark h4.ant-typography {
+  color: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-bottom {
+    text-align: center;
+  }
+}
