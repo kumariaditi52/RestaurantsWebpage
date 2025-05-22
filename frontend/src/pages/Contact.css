@@ -1,0 +1,162 @@
+.contact-page {
+  min-height: calc(100vh - 64px - 70px);
+}
+
+.contact-page.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.contact-header {
+  height: 350px;
+  background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.contact-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.contact-title {
+  color: white !important;
+  margin-bottom: 16px !important;
+}
+
+.contact-subtitle {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.contact-text {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.contact-form {
+  margin-top: 32px;
+}
+
+.contact-info-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info-card {
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.contact-info-item {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.contact-icon {
+  font-size: 24px;
+  margin-right: 16px;
+  color: #f56a00;
+}
+
+.map-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 16px !important;
+}
+
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+}
+
+.reservation-section {
+  margin-top: 60px;
+}
+
+.reservation-card {
+  padding: 24px;
+}
+
+/* Dark Mode Styles */
+.contact-page.dark .ant-card {
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+}
+
+.contact-page.dark .ant-divider {
+  border-color: #434343;
+}
+
+.contact-page.dark .contact-icon {
+  color: #ff9c6e;
+}
+
+.contact-page.dark .ant-input,
+.contact-page.dark .ant-input-number,
+.contact-page.dark .ant-picker,
+.contact-page.dark .ant-select-selector,
+.contact-page.dark .ant-input-number-input,
+.contact-page.dark .ant-input[type="date"],
+.contact-page.dark .ant-input[type="time"] {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  border-color: #434343;
+}
+
+.contact-page.dark .ant-form-item-label > label {
+  color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .contact-header {
+    height: 250px;
+  }
+  
+  .contact-title {
+    font-size: 28px !important;
+  }
+  
+  .contact-subtitle {
+    font-size: 16px;
+  }
+  
+  .contact-content {
+    padding: 40px 15px;
+  }
+  
+  .contact-info-card {
+    margin-bottom: 24px;
+  }
+  
+  .reservation-section {
+    margin-top: 40px;
+  }
+}

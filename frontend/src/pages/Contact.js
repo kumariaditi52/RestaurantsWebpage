@@ -1,96 +1,93 @@
       import React from 'react';
-      import { Typography, Form, Input, Button, Row, Col, Card, Divider } from 'antd';
+      import { Typography, Row, Col, Form, Input, Button, Card, Divider } from 'antd';
       import { 
-        MailOutlined, 
-        PhoneOutlined, 
         EnvironmentOutlined, 
+        PhoneOutlined, 
+        MailOutlined,
         ClockCircleOutlined,
         SendOutlined
       } from '@ant-design/icons';
       import { useTheme } from '../context/ThemeContext';
+      import './Contact.css';
 
       const { Title, Paragraph, Text } = Typography;
       const { TextArea } = Input;
 
       const Contact = () => {
-        const { darkMode, theme } = useTheme();
+        const { darkMode } = useTheme();
   
         const onFinish = (values) => {
-          console.log('Received values:', values);
+          console.log('Form values:', values);
+          // Here you would typically send the form data to your backend
+          alert('Thank you for your message! We will get back to you soon.');
         };
   
         return (
-          <div 
-            className={`contact-container ${darkMode ? 'dark' : ''}`}
-            style={{ 
-              backgroundColor: theme.colors.background,
-              color: theme.colors.text
-            }}
-          >
-            <div className="text-center mb-6">
-              <Title level={1} className={darkMode ? 'text-white' : ''}>Contact Us</Title>
-              <Paragraph className={darkMode ? 'text-gray-300' : ''}>
-                We'd love to hear from you! Reach out with any questions, feedback, or to make a reservation.
-              </Paragraph>
+          <div className={`contact-page ${darkMode ? 'dark' : ''}`}>
+            <div className="contact-header">
+              <div className="contact-header-overlay">
+                <Title level={1} className="contact-title">Contact Us</Title>
+                <Paragraph className="contact-subtitle">
+                  We'd love to hear from you. Reach out with any questions or to make a reservation.
+                </Paragraph>
+              </div>
             </div>
       
-            <Row gutter={[24, 24]}>
-              <Col xs={24} md={12}>
-                <Card 
-                  className={darkMode ? 'bg-gray-700 text-white' : ''}
-                  bodyStyle={darkMode ? { color: 'white' } : {}}
-                >
-                  <Title level={3} className={darkMode ? 'text-white' : ''}>Send Us a Message</Title>
+            <div className="contact-content">
+              <Row gutter={[48, 48]}>
+                <Col xs={24} lg={12}>
+                  <Title level={2}>Get In Touch</Title>
+                  <Paragraph className="contact-text">
+                    Whether you have a question about our menu, want to make a reservation, or are interested in hosting a private event, we're here to help.
+                  </Paragraph>
+            
                   <Form
-                    name="contact"
+                    name="contact_form"
                     layout="vertical"
                     onFinish={onFinish}
-                    initialValues={{ remember: true }}
+                    className="contact-form"
                   >
-                    <Form.Item
-                      name="name"
-                      rules={[{ required: true, message: 'Please input your name!' }]}
-                    >
-                      <Input 
-                        placeholder="Your Name" 
-                        size="large" 
-                        className={darkMode ? 'bg-gray-600 text-white border-gray-600' : ''}
-                      />
-                    </Form.Item>
-              
-                    <Form.Item
-                      name="email"
-                      rules={[
-                        { required: true, message: 'Please input your email!' },
-                        { type: 'email', message: 'Please enter a valid email!' }
-                      ]}
-                    >
-                      <Input 
-                        placeholder="Your Email" 
-                        size="large" 
-                        className={darkMode ? 'bg-gray-600 text-white border-gray-600' : ''}
-                      />
-                    </Form.Item>
+                    <Row gutter={16}>
+                      <Col xs={24} sm={12}>
+                        <Form.Item
+                          name="name"
+                          label="Name"
+                          rules={[{ required: true, message: 'Please enter your name' }]}
+                        >
+                          <Input size="large" placeholder="Your name" />
+                        </Form.Item>
+                      </Col>
+                      <Col xs={24} sm={12}>
+                        <Form.Item
+                          name="email"
+                          label="Email"
+                          rules={[
+                            { required: true, message: 'Please enter your email' },
+                            { type: 'email', message: 'Please enter a valid email' }
+                          ]}
+                        >
+                          <Input size="large" placeholder="Your email" />
+                        </Form.Item>
+                      </Col>
+                    </Row>
               
                     <Form.Item
                       name="subject"
-                      rules={[{ required: true, message: 'Please input a subject!' }]}
+                      label="Subject"
+                      rules={[{ required: true, message: 'Please enter a subject' }]}
                     >
-                      <Input 
-                        placeholder="Subject" 
-                        size="large" 
-                        className={darkMode ? 'bg-gray-600 text-white border-gray-600' : ''}
-                      />
+                      <Input size="large" placeholder="Subject of your message" />
                     </Form.Item>
               
                     <Form.Item
                       name="message"
-                      rules={[{ required: true, message: 'Please input your message!' }]}
+                      label="Message"
+                      rules={[{ required: true, message: 'Please enter your message' }]}
                     >
                       <TextArea 
-                        placeholder="Your Message" 
-                        rows={4} 
-                        className={darkMode ? 'bg-gray-600 text-white border-gray-600' : ''}
+                        rows={6} 
+                        placeholder="Your message" 
+                        size="large" 
                       />
                     </Form.Item>
               
@@ -100,99 +97,79 @@
                         htmlType="submit" 
                         size="large"
                         icon={<SendOutlined />}
-                        className="w-full"
                       >
                         Send Message
                       </Button>
                     </Form.Item>
                   </Form>
-                </Card>
-              </Col>
+                </Col>
         
-              <Col xs={24} md={12}>
-                <Card 
-                  className={darkMode ? 'bg-gray-700 text-white' : ''}
-                  bodyStyle={darkMode ? { color: 'white' } : {}}
-                >
-                  <Title level={3} className={darkMode ? 'text-white' : ''}>Contact Information</Title>
-                  <div className="contact-info">
-                    <div className="mb-4 flex items-start">
-                      <PhoneOutlined className="mr-3 mt-1" style={{ fontSize: '18px', color: darkMode ? '#60A5FA' : '#3B82F6' }} />
-                      <div>
-                        <Text strong className={darkMode ? 'text-white block' : 'block'}>Phone</Text>
-                        <Text className={darkMode ? 'text-gray-300' : ''}>+1 (555) 123-4567</Text>
+                <Col xs={24} lg={12}>
+                  <div className="contact-info-container">
+                    <Card className="contact-info-card">
+                      <Title level={2}>Contact Information</Title>
+                      <Paragraph className="contact-text">
+                        We're located in the heart of the city. Visit us or get in touch using the information below.
+                      </Paragraph>
+                
+                      <div className="contact-info-item">
+                        <EnvironmentOutlined className="contact-icon" />
+                        <div>
+                          <Text strong>Address</Text>
+                          <Paragraph>
+                            123 Gourmet Street<br />
+                            Foodie District, FC 98765
+                          </Paragraph>
+                        </div>
                       </div>
-                    </div>
+                
+                      <div className="contact-info-item">
+                        <PhoneOutlined className="contact-icon" />
+                        <div>
+                          <Text strong>Phone</Text>
+                          <Paragraph>(555) 123-4567</Paragraph>
+                        </div>
+                      </div>
+                
+                      <div className="contact-info-item">
+                        <MailOutlined className="contact-icon" />
+                        <div>
+                          <Text strong>Email</Text>
+                          <Paragraph>info@restaurant.com</Paragraph>
+                        </div>
+                      </div>
+                
+                      <div className="contact-info-item">
+                        <ClockCircleOutlined className="contact-icon" />
+                        <div>
+                          <Text strong>Hours</Text>
+                          <Paragraph>
+                            Monday - Friday: 11am - 10pm<br />
+                            Saturday - Sunday: 10am - 11pm
+                          </Paragraph>
+                        </div>
+                      </div>
+                    </Card>
               
-                    <div className="mb-4 flex items-start">
-                      <MailOutlined className="mr-3 mt-1" style={{ fontSize: '18px', color: darkMode ? '#60A5FA' : '#3B82F6' }} />
-                      <div>
-                        <Text strong className={darkMode ? 'text-white block' : 'block'}>Email</Text>
-                        <Text className={darkMode ? 'text-gray-300' : ''}>info@restaurant.com</Text>
-                      </div>
-                    </div>
-              
-                    <div className="mb-4 flex items-start">
-                      <EnvironmentOutlined className="mr-3 mt-1" style={{ fontSize: '18px', color: darkMode ? '#60A5FA' : '#3B82F6' }} />
-                      <div>
-                        <Text strong className={darkMode ? 'text-white block' : 'block'}>Address</Text>
-                        <Text className={darkMode ? 'text-gray-300' : ''}>
-                          123 Gourmet Street<br />
-                          Foodville, CA 90210<br />
-                          United States
-                        </Text>
-                      </div>
-                    </div>
-              
-                    <div className="mb-4 flex items-start">
-                      <ClockCircleOutlined className="mr-3 mt-1" style={{ fontSize: '18px', color: darkMode ? '#60A5FA' : '#3B82F6' }} />
-                      <div>
-                        <Text strong className={darkMode ? 'text-white block' : 'block'}>Opening Hours</Text>
-                        <Text className={darkMode ? 'text-gray-300' : ''}>
-                          Monday - Friday: 11:00 AM - 10:00 PM<br />
-                          Saturday - Sunday: 10:00 AM - 11:00 PM
-                        </Text>
-                      </div>
+                    <div className="map-container">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215266952082!2d-73.98784532396766!3d40.757977871383596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1696356704900!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="300" 
+                        style={{ border: 0 }} 
+                        allowFullScreen="" 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Restaurant Location"
+                      ></iframe>
                     </div>
                   </div>
-            
-                  <Divider className={darkMode ? 'bg-gray-600' : ''} />
-            
-                  <div className="map-container">
-                    <Title level={4} className={darkMode ? 'text-white' : ''}>Find Us</Title>
-                    <div className="map-placeholder" style={{ height: '200px', background: darkMode ? '#4B5563' : '#f0f0f0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Text className={darkMode ? 'text-gray-300' : 'text-gray-500'}>
-                        Map will be displayed here
-                      </Text>
-                    </div>
-                    <Text className={`mt-2 block text-center ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
-                      In a real app, an interactive map would be displayed here
-                    </Text>
-                  </div>
-                </Card>
-              </Col>
-            </Row>
+                </Col>
+              </Row>
       
-            <div className="reservation-section mt-8">
-              <Card 
-                className={darkMode ? 'bg-gray-700 text-white' : ''}
-                bodyStyle={darkMode ? { color: 'white' } : {}}
-              >
-                <div className="text-center">
-                  <Title level={3} className={darkMode ? 'text-white' : ''}>Make a Reservation</Title>
-                  <Paragraph className={darkMode ? 'text-gray-300' : ''}>
-                    For reservations, please call us directly or fill out the contact form above.
-                  </Paragraph>
-                  <Button 
-                    type="primary" 
-                    size="large"
-                    icon={<PhoneOutlined />}
-                    className="mt-4"
-                  >
-                    Call for Reservation
-                  </Button>
-                </div>
-              </Card>
+              <Divider />
+   
+            
             </div>
           </div>
         );

@@ -1,0 +1,26 @@
+.food-detail-container {
+  padding: 2rem;
+  min-height: calc(100vh - 64px - 70px);
+}
+
+.food-detail-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.food-detail-card.dark {
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+}
+
+.food-detail-container.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .food-detail-container {
+    padding: 1rem;
+  }
+}

@@ -1,409 +1,220 @@
-// // import React, { useState } from 'react';
-// // import { Typography, Form, Input, Button, Checkbox, Divider, message } from 'antd';
-// // import { LockOutlined, MailOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons';
-// // import { Link, useNavigate } from 'react-router-dom';
-// // import { useAuth } from '../context/AuthContext';
-// // import { useTheme } from '../context/ThemeContext';
-// // import './Login.css';
-
-// // const { Title, Paragraph } = Typography;
-
-// // const Login = () => {
-// //   const { login, isAuthenticated } = useAuth();
-// //   const { darkMode } = useTheme();
-// //   const navigate = useNavigate();
-// //   const [loading, setLoading] = useState(false);
-
-// //   // If user is already authenticated, redirect to home
-// //   React.useEffect(() => {
-// //     if (isAuthenticated) {
-// //       navigate('/home');
-// //     }
-// //   }, [isAuthenticated, navigate]);
-
-// //   const onFinish = (values) => {
-// //     setLoading(true);
-    
-// //     // Simulate API call with a timeout
-// //     setTimeout(() => {
-// //       const success = login({
-// //         email: values.email,
-// //         password: values.password,
-// //       });
-      
-// //       if (success) {
-// //         message.success('Login successful!');
-// //         navigate('/home');
-// //       } else {
-// //         message.error('Invalid email or password');
-// //       }
-      
-// //       setLoading(false);
-// //     }, 1500);
-// //   };
-
-// //   return (
-// //     <div className={`login-container fade-in slide-up ${darkMode ? 'dark' : ''}`}>
-// //       <div className="login-header">
-// //         <Title level={2} className="login-title">Welcome Back</Title>
-// //         <Paragraph className="login-subtitle">
-// //           Sign in to continue to your account
-// //         </Paragraph>
-// //       </div>
-      
-// //       <Form
-// //         name="login"
-// //         onFinish={onFinish}
-// //         layout="vertical"
-// //         size="large"
-// //         className="login-form"
-// //       >
-// //         <Form.Item
-// //           name="email"
-// //           rules={[
-// //             { required: true, message: 'Please input your email!' },
-// //             { type: 'email', message: 'Please enter a valid email!' }
-// //           ]}
-// //         >
-// //           <Input 
-// //             prefix={<MailOutlined />} 
-// //             placeholder="Email" 
-// //             className="login-input"
-// //           />
-// //         </Form.Item>
-        
-// //         <Form.Item
-// //           name="password"
-// //           rules={[{ required: true, message: 'Please input your password!' }]}
-// //         >
-// //           <Input.Password 
-// //             prefix={<LockOutlined />} 
-// //             placeholder="Password" 
-// //             className="login-input"
-// //           />
-// //         </Form.Item>
-        
-// //         <Form.Item>
-// //           <div className="flex justify-between items-center">
-// //             <Checkbox className="login-checkbox">Remember me</Checkbox>
-// //             <Link to="/forgot-password" className="login-link">
-// //               Forgot password?
-// //             </Link>
-// //           </div>
-// //         </Form.Item>
-        
-// //         <Form.Item>
-// //           <Button 
-// //             type="primary" 
-// //             htmlType="submit" 
-// //             className="login-button"
-// //             loading={loading}
-// //           >
-// //             Log in
-// //           </Button>
-// //         </Form.Item>
-        
-// //         <div className="text-center mb-4">
-// //           <span className="login-subtitle">Don't have an account?</span>{' '}
-// //           <Link to="/register" className="login-link">
-// //             Register now
-// //           </Link>
-// //         </div>
-        
-// //         <Divider plain className="login-divider">Or login with</Divider>
-        
-// //         <div className="social-buttons">
-// //           <Button 
-// //             icon={<GoogleOutlined />} 
-// //             className="social-button google-button"
-// //           >
-// //             Google
-// //           </Button>
-// //           <Button 
-// //             icon={<FacebookOutlined />} 
-// //             className="social-button facebook-button"
-// //           >
-// //             Facebook
-// //           </Button>
-// //         </div>
-// //       </Form>
-// //     </div>
-// //   );
-// // };
-
-// // export default Login;
-
-
-
-// import React, { useState } from 'react';
-// import { Typography, Form, Input, Button, Checkbox, Divider, message } from 'antd';
-// import { LockOutlined, MailOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { useAuth } from '../context/AuthContext';
-// import { useTheme } from '../context/ThemeContext';
-// import './Login.css';
-
-// const { Title, Paragraph } = Typography;
-
-// const Login = () => {
-//   const { login, isAuthenticated } = useAuth();
-//   const { darkMode } = useTheme();
-//   const navigate = useNavigate();
-//   const [loading, setLoading] = useState(false);
-
-//   // If user is already authenticated, redirect to home
-//   React.useEffect(() => {
-//     if (isAuthenticated) {
-//       navigate('/home');
-//     }
-//   }, [isAuthenticated, navigate]);
-
-//   const onFinish = (values) => {
-//     setLoading(true);
-    
-//     // Simulate API call with a timeout
-//     setTimeout(() => {
-//       const success = login({
-//         email: values.email,
-//         password: values.password,
-//       });
-      
-//       if (success) {
-//         message.success('Login successful!');
-//         navigate('/home');
-//       } else {
-//         message.error('Invalid email or password');
-//       }
-      
-//       setLoading(false);
-//     }, 1500);
-//   };
-
-//   return (
-//     <div className={`login-container fade-in slide-up ${darkMode ? 'dark' : ''}`}>
-//       <div className="login-header">
-//         <Title level={2} className="login-title">Welcome Back</Title>
-//         <Paragraph className="login-subtitle">
-//           Sign in to continue to your account
-//         </Paragraph>
-//       </div>
-      
-//       <Form
-//         name="login"
-//         onFinish={onFinish}
-//         layout="vertical"
-//         size="large"
-//         className="login-form"
-//       >
-//         <Form.Item
-//           name="email"
-//           rules={[
-//             { required: true, message: 'Please input your email!' },
-//             { type: 'email', message: 'Please enter a valid email!' }
-//           ]}
-//         >
-//           <Input 
-//             prefix={<MailOutlined />} 
-//             placeholder="Email" 
-//             className="login-input"
-//           />
-//         </Form.Item>
-        
-//         <Form.Item
-//           name="password"
-//           rules={[{ required: true, message: 'Please input your password!' }]}
-//         >
-//           <Input.Password 
-//             prefix={<LockOutlined />} 
-//             placeholder="Password" 
-//             className="login-input"
-//           />
-//         </Form.Item>
-        
-//         <Form.Item>
-//           <div className="flex justify-between items-center">
-//             <Checkbox className="login-checkbox">Remember me</Checkbox>
-//             <Link to="/forgot-password" className="login-link">
-//               Forgot password?
-//             </Link>
-//           </div>
-//         </Form.Item>
-        
-//         <Form.Item>
-//           <Button 
-//             type="primary" 
-//             htmlType="submit" 
-//             className="login-button"
-//             loading={loading}
-//           >
-//             Log in
-//           </Button>
-//         </Form.Item>
-        
-//         <div className="text-center mb-4">
-//           <span className="login-subtitle">Don't have an account?</span>{' '}
-//           <Link to="/register" className="login-link">
-//             Register now
-//           </Link>
-//         </div>
-        
-//         <Divider plain className="login-divider">Or login with</Divider>
-        
-//         <div className="social-buttons">
-//           <Button 
-//             icon={<GoogleOutlined />} 
-//             className="social-button google-button"
-//           >
-//             Google
-//           </Button>
-//           <Button 
-//             icon={<FacebookOutlined />} 
-//             className="social-button facebook-button"
-//           >
-//             Facebook
-//           </Button>
-//         </div>
-//       </Form>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-
 import React, { useState } from 'react';
-import { Typography, Form, Input, Button, Checkbox, Divider, message } from 'antd';
-import { LockOutlined, MailOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { Typography, Form, Input, Button, Card, Divider, message } from 'antd';
+import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import './Login.css';
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 const Login = () => {
-  const { login, isAuthenticated } = useAuth();
   const { darkMode } = useTheme();
+  const { login, register } = useAuth();
   const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
-
-  // If user is already authenticated, redirect to home
-  React.useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/home');
-    }
-  }, [isAuthenticated, navigate]);
-
-  const onFinish = (values) => {
+  
+  const onFinish = async (values) => {
     setLoading(true);
     
-    // Simulate API call with a timeout
-    setTimeout(() => {
-      const success = login({
-        email: values.email,
-        password: values.password,
-      });
-      
-      if (success) {
-        message.success('Login successful!');
-        navigate('/home');
+    try {
+      if (isLogin) {
+        // For demo purposes, we'll simulate a successful login
+        // In a real app, you would use the actual login function from your auth context
+        // await login(values.email, values.password);
+        
+        // Simulate successful login
+        setTimeout(() => {
+          message.success('Login successful!');
+          // Store some user info in localStorage to simulate authentication
+          localStorage.setItem('user', JSON.stringify({
+            email: values.email,
+            name: values.email.split('@')[0], // Just using part of email as name for demo
+            isAuthenticated: true
+          }));
+          
+          // Navigate to home page after successful login
+          navigate('/');
+          setLoading(false);
+        }, 1000);
       } else {
-        message.error('Invalid email or password');
+        // For registration
+        if (values.password !== values.confirmPassword) {
+          throw new Error('Passwords do not match');
+        }
+        
+        // Simulate successful registration
+        setTimeout(() => {
+          message.success('Registration successful! Please login.');
+          setIsLogin(true);
+          setLoading(false);
+        }, 1000);
       }
-      
+    } catch (error) {
+      message.error(error.message || 'An error occurred');
       setLoading(false);
-    }, 1500);
+    }
   };
-
-  return (
-    <div className={`login-container fade-in slide-up ${darkMode ? 'dark' : ''}`}>
-      <div className="login-header">
-        <Title level={2} className="login-title">Welcome Back</Title>
-        <Paragraph className="login-subtitle">
-          Sign in to continue to your account
-        </Paragraph>
-      </div>
+  
+  const toggleForm = () => {
+    setIsLogin(!isLogin);
+  };
+  
+  // For demo login - bypasses the form validation
+  const handleDemoLogin = () => {
+    setLoading(true);
+    
+    // Simulate successful login with demo credentials
+    setTimeout(() => {
+      message.success('Demo login successful!');
+      // Store demo user info in localStorage
+      localStorage.setItem('user', JSON.stringify({
+        email: 'user@example.com',
+        name: 'Demo User',
+        isAuthenticated: true
+      }));
       
-      <Form
-        name="login"
-        onFinish={onFinish}
-        layout="vertical"
-        size="large"
-        className="login-form"
-      >
-        <Form.Item
-          name="email"
-          rules={[
-            { required: true, message: 'Please input your email!' },
-            { type: 'email', message: 'Please enter a valid email!' }
-          ]}
-        >
-          <Input 
-            prefix={<MailOutlined />} 
-            placeholder="Email" 
-            className="login-input"
-          />
-        </Form.Item>
-        
-        <Form.Item
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password 
-            prefix={<LockOutlined />} 
-            placeholder="Password" 
-            className="login-input"
-          />
-        </Form.Item>
-        
-        <Form.Item>
-          <div className="flex justify-between items-center">
-            <Checkbox className="login-checkbox">Remember me</Checkbox>
-            <Link to="/forgot-password" className="login-link">
-              Forgot password?
-            </Link>
+      // Navigate to home page
+      navigate('/');
+      setLoading(false);
+    }, 1000);
+  };
+  
+  return (
+    <div className={`login-page ${darkMode ? 'dark' : ''}`}>
+      <div className="login-container">
+        <Card className="login-card">
+          <Title level={2} className="login-title">
+            {isLogin ? 'Welcome Back' : 'Create Account'}
+          </Title>
+          <Paragraph className="login-subtitle">
+            {isLogin 
+              ? 'Sign in to access your account and place orders' 
+              : 'Join us to start ordering delicious meals'}
+          </Paragraph>
+          
+          <Form
+            name="auth_form"
+            layout="vertical"
+            onFinish={onFinish}
+            autoComplete="off"
+          >
+            {!isLogin && (
+              <Form.Item
+                name="name"
+                rules={[{ required: true, message: 'Please enter your name' }]}
+              >
+                <Input 
+                  prefix={<UserOutlined />} 
+                  placeholder="Full Name" 
+                  size="large" 
+                />
+              </Form.Item>
+            )}
+            
+            <Form.Item
+              name="email"
+              rules={[
+                { required: true, message: 'Please enter your email' },
+                { type: 'email', message: 'Please enter a valid email' }
+              ]}
+            >
+              <Input 
+                prefix={<MailOutlined />} 
+                placeholder="Email" 
+                size="large" 
+              />
+            </Form.Item>
+            
+            <Form.Item
+              name="password"
+              rules={[
+                { required: true, message: 'Please enter your password' },
+                { min: 6, message: 'Password must be at least 6 characters' }
+              ]}
+            >
+              <Input.Password 
+                prefix={<LockOutlined />} 
+                placeholder="Password" 
+                size="large" 
+              />
+            </Form.Item>
+            
+            {!isLogin && (
+              <Form.Item
+                name="confirmPassword"
+                dependencies={['password']}
+                rules={[
+                  { required: true, message: 'Please confirm your password' },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue('password') === value) {
+                        return Promise.resolve();
+                      }
+                      return Promise.reject(new Error('The two passwords do not match'));
+                    },
+                  }),
+                ]}
+              >
+                <Input.Password 
+                  prefix={<LockOutlined />} 
+                  placeholder="Confirm Password" 
+                  size="large" 
+                />
+              </Form.Item>
+            )}
+            
+            {isLogin && (
+              <div className="forgot-password">
+                <a href="#">Forgot password?</a>
+              </div>
+            )}
+            
+            <Form.Item>
+              <Button 
+                type="primary" 
+                htmlType="submit" 
+                size="large" 
+                block
+                loading={loading}
+              >
+                {isLogin ? 'Sign In' : 'Sign Up'}
+              </Button>
+            </Form.Item>
+          </Form>
+          
+          <Divider>
+            <Text type="secondary">OR</Text>
+          </Divider>
+          
+          <div className="auth-toggle">
+            <Text>
+              {isLogin 
+                ? "Don't have an account?" 
+                : "Already have an account?"}
+            </Text>
+            <Button type="link" onClick={toggleForm}>
+              {isLogin ? 'Sign Up' : 'Sign In'}
+            </Button>
           </div>
-        </Form.Item>
-        
-        <Form.Item>
-          <Button 
-            type="primary" 
-            htmlType="submit" 
-            className="login-button"
-            loading={loading}
-          >
-            Log in
-          </Button>
-        </Form.Item>
-        
-        <div className="text-center mb-4">
-          <span className="login-subtitle">Don't have an account?</span>{' '}
-          <Link to="/register" className="login-link">
-            Register now
-          </Link>
-        </div>
-        
-        <Divider plain className="login-divider">Or login with</Divider>
-        
-        <div className="social-buttons">
-          <Button 
-            icon={<GoogleOutlined />} 
-            className="social-button google-button"
-          >
-            Google
-          </Button>
-          <Button 
-            icon={<FacebookOutlined />} 
-            className="social-button facebook-button"
-          >
-            Facebook
-          </Button>
-        </div>
-      </Form>
+          
+          <div className="demo-credentials">
+            <Text type="secondary">
+              Use demo credentials:
+            </Text>
+            <Button 
+              type="link" 
+              onClick={handleDemoLogin}
+              loading={loading}
+            >
+              Login as Demo User
+            </Button>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };
 
 export default Login;
-
-

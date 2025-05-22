@@ -1,212 +1,191 @@
   import React, { useState } from 'react';
-  import { Layout, Button, Dropdown, Menu, Avatar } from 'antd';
-  import { Link, useNavigate, useLocation } from 'react-router-dom';
-  import { useAuth } from '../context/AuthContext';
-  import { useTheme } from '../context/ThemeContext';
-  import {
+  import { Layout, Menu, Button, Drawer, Avatar, Dropdown, Switch } from 'antd';
+  import { 
+    MenuOutlined, 
+    HomeOutlined, 
+    ShopOutlined, 
+    InfoCircleOutlined, 
+    PhoneOutlined, 
+    ReadOutlined,
     UserOutlined,
     LogoutOutlined,
-    DownOutlined,
-    HomeOutlined,
-    ReadOutlined,
-    PhoneOutlined,
-    CustomerServiceOutlined,
-    MenuOutlined,
-    InfoCircleOutlined
+    LoginOutlined,
+    BulbOutlined
   } from '@ant-design/icons';
+  import { Link, useLocation, useNavigate } from 'react-router-dom';
+  import { useTheme } from '../context/ThemeContext';
+  import { useAuth } from '../context/AuthContext';
   import './Header.css';
 
   const { Header: AntHeader } = Layout;
 
   const Header = () => {
-    const { isAuthenticated, logout, user } = useAuth();
-    const { darkMode, toggleTheme, theme } = useTheme();
-    const navigate = useNavigate();
-    const location = useLocation();
     const [visible, setVisible] = useState(false);
-    const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+    const { darkMode, toggleTheme } = useTheme();
+    const { isAuthenticated, user, logout } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const handleLogout = () => {
-      logout();
-      navigate('/login');
+    const showDrawer = () => {
+      setVisible(true);
     };
 
-    const handleMenuClick = ({ key }) => {
-      if (key === 'logout') {
-        handleLogout();
-      }
+    const onClose = () => {
       setVisible(false);
     };
 
+    const handleLogout = () => {
+      logout();
+      navigate('/');
+    };
+
     const userMenu = (
-      <Menu
-        onClick={handleMenuClick}
-        className={darkMode ? 'bg-gray-700 text-white' : ''}
-      >
-        <Menu.Item key="profile" icon={<UserOutlined />} className={darkMode ? 'text-white hover:bg-gray-600' : ''}>
+      <Menu>
+        <Menu.Item key="profile" icon={<UserOutlined />}>
           Profile
         </Menu.Item>
+        <Menu.Item key="orders" icon={<ShopOutlined />}>
+          My Orders
+        </Menu.Item>
         <Menu.Divider />
-        <Menu.Item key="logout" icon={<LogoutOutlined />} className={darkMode ? 'text-white hover:bg-gray-600' : ''}>
+        <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={handleLogout}>
           Logout
         </Menu.Item>
       </Menu>
     );
 
-    const mobileMenu = (
-      <Menu
-        className={darkMode ? 'bg-gray-700 text-white' : ''}
-        selectedKeys={[location.pathname]}
-      >
-        <Menu.Item key="/home" icon={<HomeOutlined />} className={darkMode ? 'text-white hover:bg-gray-600' : ''}>
-          <Link to="/home">Home</Link>
-        </Menu.Item>
-        <Menu.Item key="/about" icon={<InfoCircleOutlined />} className={darkMode ? 'text-white hover:bg-gray-600' : ''}>
-          <Link to="/about">About</Link>
-        </Menu.Item>
-        <Menu.Item key="/blog" icon={<ReadOutlined />} className={darkMode ? 'text-white hover:bg-gray-600' : ''}>
-          <Link to="/blog">Blog</Link>
-        </Menu.Item>
-        <Menu.Item key="/services" icon={<CustomerServiceOutlined />} className={darkMode ? 'text-white hover:bg-gray-600' : ''}>
-          <Link to="/services">Services</Link>
-        </Menu.Item>
-        <Menu.Item key="/contact" icon={<PhoneOutlined />} className={darkMode ? 'text-white hover:bg-gray-600' : ''}>
-          <Link to="/contact">Contact</Link>
-        </Menu.Item>
-      </Menu>
-    );
-
-    // Determine if we're on a public route (login or register)
-    const isPublicRoute = location.pathname === '/login' || location.pathname === '/register';
+    const menuItems = [
+      {
+        key: '/',
+        icon: <HomeOutlined />,
+        label: <Link to="/">Home</Link>,
+      },
+      {
+        key: '/menu',
+        icon: <ShopOutlined />,
+        label: <Link to="/menu">Menu</Link>,
+      },
+      {
+        key: '/about',
+        icon: <InfoCircleOutlined />,
+        label: <Link to="/about">About</Link>,
+      },
+      {
+        key: '/contact',
+        icon: <PhoneOutlined />,
+        label: <Link to="/contact">Contact</Link>,
+      },
+      {
+        key: '/blog',
+        icon: <ReadOutlined />,
+        label: <Link to="/blog">Blog</Link>,
+      },
+    ];
 
     return (
-      <AntHeader 
-        className={`site-header ${darkMode ? 'dark' : ''} flex justify-between items-center shadow-md`}
-        style={{ 
-          backgroundColor: darkMode ? '#111827' : '#ffffff',
-          color: theme.colors.text,
-          borderBottom: `1px solid ${theme.colors.border}`
-        }}
-      >
-        <div className="flex items-center">
-          {/* Mobile menu button - only show when authenticated */}
-          {isAuthenticated && (
-            <Dropdown
-              overlay={mobileMenu}
-              trigger={['click']}
-              visible={mobileMenuVisible}
-              onVisibleChange={setMobileMenuVisible}
-              className="md:hidden"
-            >
-              <Button
-                type="text"
-                icon={<MenuOutlined />}
-                className={`mobile-menu-button ${darkMode ? 'text-white' : ''}`}
+      <AntHeader className={`header ${darkMode ? 'dark' : ''}`}>
+        <div className="logo">
+          <Link to="/">
+            <h1 className="logo-text">Gourmet</h1>
+          </Link>
+        </div>
+        
+        <div className="menu-section">
+          <Menu
+            theme={darkMode ? 'dark' : 'light'}
+            mode="horizontal"
+            selectedKeys={[location.pathname]}
+            className="desktop-menu"
+            items={menuItems}
+          />
+          
+          <div className="header-actions">
+            <Switch
+              checked={darkMode}
+              onChange={toggleTheme}
+              checkedChildren={<BulbOutlined />}
+              unCheckedChildren={<BulbOutlined />}
+              className="theme-switch"
+            />
+            
+            {isAuthenticated ? (
+              <Dropdown overlay={userMenu} trigger={['click']}>
+                <div className="user-profile">
+                  <Avatar src={user?.avatar} icon={<UserOutlined />} />
+                  <span className="user-name">{user?.name}</span>
+                </div>
+              </Dropdown>
+            ) : (
+              <Button type="primary" icon={<LoginOutlined />}>
+                <Link to="/login">Login</Link>
+              </Button>
+            )}
+          </div>
+          
+          <Button 
+            className="menu-button" 
+            type="text" 
+            icon={<MenuOutlined />} 
+            onClick={showDrawer}
+          />
+        </div>
+        
+        <Drawer
+          title="Menu"
+          placement="right"
+          onClose={onClose}
+          visible={visible}
+          className={darkMode ? 'dark-drawer' : ''}
+        >
+          <Menu
+            theme={darkMode ? 'dark' : 'light'}
+            mode="vertical"
+            selectedKeys={[location.pathname]}
+            onClick={onClose}
+            items={menuItems}
+          />
+          
+          <div className="drawer-actions">
+            <div className="drawer-theme-switch">
+              <span>Dark Mode</span>
+              <Switch
+                checked={darkMode}
+                onChange={toggleTheme}
+                checkedChildren={<BulbOutlined />}
+                unCheckedChildren={<BulbOutlined />}
               />
-            </Dropdown>
-          )}
-
-          {/* Logo */}
-          <div className="logo">
-            <Link to={isAuthenticated ? "/home" : "/login"} className={`logo-text ${darkMode ? 'text-white' : 'text-blue-600'}`}>
-              Restaurant App
-            </Link>
-          </div>
-        </div>
-
-        {/* Navigation Menu - only show when authenticated */}
-        {isAuthenticated && (
-          <div className="nav-menu hidden md:block">
-            <Menu
-              mode="horizontal"
-              selectedKeys={[location.pathname]}
-              className={`nav-menu ${darkMode ? 'dark' : ''}`}
-            >
-              <Menu.Item
-                key="/home"
-                icon={<HomeOutlined />}
-                onClick={() => navigate('/home')}
-              >
-                Home
-              </Menu.Item>
-              <Menu.Item
-                key="/about"
-                icon={<InfoCircleOutlined />}
-                onClick={() => navigate('/about')}
-              >
-                About
-              </Menu.Item>
-              <Menu.Item
-                key="/blog"
-                icon={<ReadOutlined />}
-                onClick={() => navigate('/blog')}
-              >
-                Blog
-              </Menu.Item>
-              <Menu.Item
-                key="/services"
-                icon={<CustomerServiceOutlined />}
-                onClick={() => navigate('/services')}
-              >
-                Services
-              </Menu.Item>
-              <Menu.Item
-                key="/contact"
-                icon={<PhoneOutlined />}
-                onClick={() => navigate('/contact')}
-              >
-                Contact
-              </Menu.Item>
-            </Menu>
-          </div>
-        )}
-
-        <div className="flex items-center gap-3">
-          <Button
-            type="text"
-            onClick={toggleTheme}
-            className={`theme-toggle ${darkMode ? 'text-white' : ''}`}
-            aria-label="Toggle theme"
-          >
-            {darkMode ? '🌞' : '🌙'}
-          </Button>
-
-          {isAuthenticated ? (
-            <Dropdown
-              overlay={userMenu}
-              trigger={['click']}
-              visible={visible}
-              onVisibleChange={setVisible}
-            >
-              <div className={`profile-info ${darkMode ? 'text-white' : ''} cursor-pointer flex items-center`}>
-                <Avatar
-                  icon={<UserOutlined />}
-                  className={`${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mr-2`}
-                />
-                <span className="mr-1 hidden sm:inline">{user?.name || 'User'}</span>
-                <DownOutlined style={{ fontSize: '12px' }} />
-              </div>
-            </Dropdown>
-          ) : (
-            !isPublicRoute && (
-              <div className="auth-buttons flex gap-2">
-                <Button
-                  type="default"
-                  onClick={() => navigate('/login')}
-                  className={darkMode ? 'border-gray-600 text-white hover:border-blue-400' : ''}
+            </div>
+            
+            {isAuthenticated ? (
+              <div className="drawer-user-section">
+                <div className="drawer-user-info">
+                  <Avatar src={user?.avatar} icon={<UserOutlined />} />
+                  <span className="drawer-user-name">{user?.name}</span>
+                </div>
+                <Button 
+                  type="primary" 
+                  danger 
+                  icon={<LogoutOutlined />}
+                  onClick={handleLogout}
                 >
-                  Login
-                </Button>
-                <Button
-                  type="primary"
-                  onClick={() => navigate('/register')}
-                >
-                  Register
+                  Logout
                 </Button>
               </div>
-            )
-          )}
-        </div>
+            ) : (
+              <Button 
+                type="primary" 
+                icon={<LoginOutlined />}
+                block
+                onClick={() => {
+                  navigate('/login');
+                  onClose();
+                }}
+              >
+                Login
+              </Button>
+            )}
+          </div>
+        </Drawer>
       </AntHeader>
     );
   };

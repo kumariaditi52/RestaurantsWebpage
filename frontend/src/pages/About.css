@@ -1,0 +1,180 @@
+.about-page {
+  min-height: calc(100vh - 64px - 70px);
+}
+
+.about-page.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.about-header {
+  height: 350px;
+  background-image: url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.about-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.about-title {
+  color: white !important;
+  margin-bottom: 16px !important;
+}
+
+.about-subtitle {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.about-story-section,
+.about-philosophy-section,
+.about-team-section,
+.about-values-section {
+  margin-bottom: 60px;
+}
+
+.about-image-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+  transform: scale(1.03);
+}
+
+.about-text {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 24px !important;
+}
+
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+}
+
+.philosophy-card {
+  height: 100%;
+  text-align: center;
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.philosophy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.team-member-card {
+  text-align: center;
+  padding: 24px;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.team-member-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-member-avatar {
+  margin-bottom: 16px;
+}
+
+.team-member-name {
+  margin-bottom: 4px !important;
+}
+
+.team-member-title {
+  color: #f56a00;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.team-member-bio {
+  font-size: 14px;
+}
+
+.values-list {
+  font-size: 16px;
+  line-height: 1.8;
+  padding-left: 20px;
+}
+
+.values-list li {
+  margin-bottom: 12px;
+}
+
+/* Dark Mode Styles */
+.about-page.dark .ant-card {
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+}
+
+.about-page.dark .ant-divider {
+  border-color: #434343;
+}
+
+.about-page.dark .team-member-title {
+  color: #ff9c6e;
+}
+
+@media (max-width: 768px) {
+  .about-header {
+    height: 250px;
+  }
+  
+  .about-title {
+    font-size: 28px !important;
+  }
+  
+  .about-subtitle {
+    font-size: 16px;
+  }
+  
+  .about-content {
+    padding: 40px 15px;
+  }
+  
+  .about-story-section,
+  .about-philosophy-section,
+  .about-team-section,
+  .about-values-section {
+    margin-bottom: 40px;
+  }
+}
