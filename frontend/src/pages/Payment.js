@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
-import { Typography, Card, Form, Input, Button, Radio, Steps, Divider, Row, Col, message, Result } from 'antd';
-import { CreditCardOutlined, BankOutlined, DollarOutlined, CheckCircleOutlined, LockOutlined } from '@ant-design/icons';
+import { Typography, Card, Form, Input, Button, Radio, Steps, Divider, Row, Col, message, Result, Image } from 'antd';
+import { CreditCardOutlined, BankOutlined, DollarOutlined, CheckCircleOutlined, LockOutlined, QrcodeOutlined } from '@ant-design/icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import './Payment.css';
@@ -18,6 +19,7 @@ const Payment = () => {
   const [orderComplete, setOrderComplete] = useState(false);
   const [cart, setCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [qrScanned, setQrScanned] = useState(false);
 
   // Load cart data from localStorage or from location state
   useEffect(() => {
@@ -37,6 +39,7 @@ const Payment = () => {
 
   const handlePaymentMethodChange = (e) => {
     setPaymentMethod(e.target.value);
+    setQrScanned(false);
   };
 
   const handleNext = () => {
@@ -59,6 +62,16 @@ const Payment = () => {
       // Clear the cart in localStorage
       localStorage.removeItem('cart');
     }, 2000);
+  };
+
+  const handleQrScanned = () => {
+    setQrScanned(true);
+    message.success('QR code scanned successfully! Waiting for bank confirmation...');
+    
+    // Simulate bank confirmation
+    setTimeout(() => {
+      handlePaymentSubmit();
+    }, 3000);
   };
 
   const handleBackToMenu = () => {
@@ -115,6 +128,9 @@ const Payment = () => {
           </Radio.Button>
           <Radio.Button value="bank-transfer" className="payment-method-option">
             <BankOutlined /> Bank Transfer
+          </Radio.Button>
+          <Radio.Button value="qr-code" className="payment-method-option">
+            <QrcodeOutlined /> QR Code
           </Radio.Button>
           <Radio.Button value="cash" className="payment-method-option">
             <DollarOutlined /> Cash on Delivery
@@ -204,6 +220,39 @@ const Payment = () => {
               <Button type="primary" onClick={handlePaymentSubmit} loading={loading}>
                 Confirm Order
               </Button>
+            </div>
+          </div>
+        )}
+        
+        {paymentMethod === 'qr-code' && (
+          <div className="payment-info qr-code-container">
+            <Paragraph>
+              Scan this QR code with your bank app to complete the payment:
+            </Paragraph>
+            <div className="qr-code-image">
+              <Image 
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=RestaurantPayment_OrderID_12345_Amount_${(totalAmount + (totalAmount * 0.1) + 5).toFixed(2)}" 
+                alt="Payment QR Code"
+                preview={false}
+              />
+            </div>
+            <div className="qr-instructions">
+              <p>1. Open your bank app</p>
+              <p>2. Select "Scan QR code" option</p>
+              <p>3. Point your camera at the QR code</p>
+              <p>4. Confirm the payment in your app</p>
+            </div>
+            <div className="payment-actions">
+              <Button onClick={handlePrevious}>Back</Button>
+              {qrScanned ? (
+                <Button type="primary" loading={true}>
+                  Processing Payment...
+                </Button>
+              ) : (
+                <Button type="primary" onClick={handleQrScanned}>
+                  I've Completed the Payment
+                </Button>
+              )}
             </div>
           </div>
         )}
