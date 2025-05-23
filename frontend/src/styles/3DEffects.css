@@ -1,0 +1,856 @@
+/* 3DEffects.css - Global 3D animation styles for the entire application */
+
+/* Enable 3D space for the entire application */
+.with-3d-effects {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Page transition wrapper */
+.page-transition-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+/* 3D Floating Elements */
+.floating-element {
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Parallax 3D Effect */
+.parallax-3d {
+  position: relative;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Tilt Effect for Cards and Buttons */
+.tilt-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.tilt-effect:hover {
+  transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dark .tilt-effect:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* 3D Card Effect */
+.card-3d {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card-3d:hover {
+  transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+  box-shadow: 
+    -5px 5px 15px rgba(0, 0, 0, 0.1),
+    5px -5px 15px rgba(0, 0, 0, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.1),
+    -5px -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark .card-3d:hover {
+  box-shadow: 
+    -5px 5px 15px rgba(0, 0, 0, 0.3),
+    5px -5px 15px rgba(0, 0, 0, 0.3),
+    5px 5px 15px rgba(0, 0, 0, 0.3),
+    -5px -5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Flip Card Effect */
+.flip-card {
+  perspective: 1000px;
+  height: 300px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.flip-card-front {
+  background-color: #f9fafb;
+  color: black;
+}
+
+.dark .flip-card-front {
+  background-color: #374151;
+  color: white;
+}
+
+.flip-card-back {
+  background-color: #3b82f6;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.dark .flip-card-back {
+  background-color: #2563eb;
+}
+
+/* Floating Card Animation */
+.floating-card {
+  animation: cardFloat 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* 3D Button Effect */
+.button-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-3d::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: inherit;
+  border-radius: inherit;
+  transform: translateZ(-10px);
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button-3d:hover {
+  transform: translateY(-5px) translateZ(20px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.button-3d:hover::before {
+  opacity: 0.5;
+}
+
+.dark .button-3d:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* 3D Image Effect */
+.image-3d {
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.image-3d:hover {
+  transform: scale(1.05) rotateY(5deg);
+}
+
+/* 3D Text Effect */
+.text-3d {
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5),
+               0px 2px 0px rgba(255, 255, 255, 0.4),
+               0px 3px 0px rgba(255, 255, 255, 0.3),
+               0px 4px 0px rgba(255, 255, 255, 0.2),
+               0px 5px 0px rgba(255, 255, 255, 0.1),
+               0px 6px 0px rgba(255, 255, 255, 0.05),
+               0px 7px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.dark .text-3d {
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5),
+               0px 2px 0px rgba(0, 0, 0, 0.4),
+               0px 3px 0px rgba(0, 0, 0, 0.3),
+               0px 4px 0px rgba(0, 0, 0, 0.2),
+               0px 5px 0px rgba(0, 0, 0, 0.1),
+               0px 6px 0px rgba(0, 0, 0, 0.05),
+               0px 7px 10px rgba(255, 255, 255, 0.1);
+}
+
+.text-3d:hover {
+  transform: translateY(-5px);
+}
+
+/* 3D Rotating Elements */
+.rotate-3d {
+  animation: rotate3d 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes rotate3d {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* 3D Cube */
+.cube-3d {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-15deg) rotateY(15deg);
+  animation: rotateCube 20s infinite linear;
+}
+
+.cube-3d:hover {
+  animation-play-state: paused;
+}
+
+@keyframes rotateCube {
+  0% {
+    transform: rotateX(-15deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(-15deg) rotateY(360deg);
+  }
+}
+
+.cube-face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 5px solid white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dark .cube-face {
+  background-color: rgba(31, 41, 55, 0.9);
+  border-color: #374151;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.cube-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cube-face.front {
+  transform: translateZ(100px);
+}
+
+.cube-face.back {
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+.cube-face.right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+.cube-face.left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.cube-face.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+.cube-face.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+/* 3D Scroll Animation */
+.scroll-3d-element {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-3d-element.active-3d {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3D Depth Layers */
+.depth-layer {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.depth-1 {
+  transform: translateZ(20px);
+}
+
+.depth-2 {
+  transform: translateZ(40px);
+}
+
+.depth-3 {
+  transform: translateZ(60px);
+}
+
+.depth-4 {
+  transform: translateZ(80px);
+}
+
+.depth-5 {
+  transform: translateZ(100px);
+}
+
+/* 3D Hover Card with Info */
+.hover-card-3d {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.hover-card-3d:hover {
+  transform: scale(1.05) rotateX(5deg) rotateY(5deg);
+}
+
+.hover-card-3d img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hover-card-3d:hover img {
+  transform: scale(1.1);
+}
+
+.hover-card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+}
+
+.hover-card-3d:hover .hover-card-info {
+  transform: translateY(0);
+}
+
+/* 3D Flip Button */
+.flip-button-3d {
+  position: relative;
+  perspective: 1000px;
+  width: 200px;
+  height: 50px;
+}
+
+.flip-button-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-button-3d:hover .flip-button-inner {
+  transform: rotateX(180deg);
+}
+
+.flip-button-front, .flip-button-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.flip-button-front {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.flip-button-back {
+  background-color: #f59e0b;
+  color: white;
+  transform: rotateX(180deg);
+}
+
+/* 3D Spinning Plate */
+.spinning-plate-3d {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spinPlate 20s linear infinite;
+}
+
+@keyframes spinPlate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.plate-top {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #ffffff 0%, #f0f0f0 70%, #e0e0e0 100%);
+  border-radius: 50%;
+  transform: rotateX(90deg) translateZ(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark .plate-top {
+  background: radial-gradient(circle, #4b5563 0%, #374151 70%, #1f2937 100%);
+}
+
+.plate-side {
+  position: absolute;
+  width: 200px;
+  height: 20px;
+  background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
+  transform: rotateX(0deg) translateY(90px);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  border-radius: 50%;
+}
+
+.dark .plate-side {
+  background: linear-gradient(to bottom, #374151, #1f2937);
+}
+
+/* 3D Parallax Background */
+.parallax-bg-3d {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+/* 3D Accordion */
+.accordion-3d {
+  perspective: 1000px;
+}
+
+.accordion-item-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.accordion-item-3d:hover {
+  transform: rotateX(5deg);
+}
+
+.accordion-content-3d {
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  transform-style: preserve-3d;
+  height: 0;
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease, height 0.5s ease;
+}
+
+.accordion-item-3d.active .accordion-content-3d {
+  transform: rotateX(0);
+  height: auto;
+  opacity: 1;
+}
+
+/* 3D Navigation Menu */
+.nav-3d {
+  perspective: 1000px;
+}
+
+.nav-item-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.nav-item-3d:hover {
+  transform: translateZ(20px);
+}
+
+/* 3D Dropdown Menu */
+.dropdown-3d {
+  perspective: 1000px;
+}
+
+.dropdown-menu-3d {
+  transform-origin: top center;
+  transform: rotateX(-90deg);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.dropdown-3d:hover .dropdown-menu-3d {
+  transform: rotateX(0);
+  opacity: 1;
+}
+
+/* 3D Carousel */
+.carousel-3d {
+  perspective: 1000px;
+}
+
+.carousel-item-3d {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.carousel-item-3d.active {
+  opacity: 1;
+  transform: translateX(0) rotateY(0);
+  z-index: 1;
+}
+
+.carousel-item-3d.prev {
+  opacity: 0.5;
+  transform: translateX(-100%) rotateY(30deg);
+  z-index: 0;
+}
+
+.carousel-item-3d.next {
+  opacity: 0.5;
+  transform: translateX(100%) rotateY(-30deg);
+  z-index: 0;
+}
+
+/* 3D Page Transition */
+.page-transition-3d {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  perspective: 1000px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.page-transition-3d.active {
+  opacity: 1;
+}
+
+.page-transition-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: pageSpin 1s ease-in-out forwards;
+}
+
+@keyframes pageSpin {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+/* 3D Loading Spinner */
+.spinner-3d {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.spinner-cube {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: spinnerRotate 2s infinite linear;
+}
+
+@keyframes spinnerRotate {
+  0% {
+    transform: rotateX(0) rotateY(0);
+  }
+  25% {
+    transform: rotateX(90deg) rotateY(0);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(0);
+  }
+  75% {
+    transform: rotateX(270deg) rotateY(0);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(0);
+  }
+}
+
+.spinner-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(59, 130, 246, 0.8);
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.spinner-face.front {
+  transform: translateZ(30px);
+}
+
+.spinner-face.back {
+  transform: rotateY(180deg) translateZ(30px);
+}
+
+.spinner-face.right {
+  transform: rotateY(90deg) translateZ(30px);
+}
+
+.spinner-face.left {
+  transform: rotateY(-90deg) translateZ(30px);
+}
+
+.spinner-face.top {
+  transform: rotateX(90deg) translateZ(30px);
+}
+
+.spinner-face.bottom {
+  transform: rotateX(-90deg) translateZ(30px);
+}
+
+/* 3D Modal */
+.modal-3d {
+  perspective: 1000px;
+}
+
+.modal-content-3d {
+  transform-style: preserve-3d;
+  transform: scale(0.7) rotateX(45deg);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.modal-3d.show .modal-content-3d {
+  transform: scale(1) rotateX(0);
+  opacity: 1;
+}
+
+/* 3D Form Elements */
+.input-3d {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.input-3d:focus {
+  transform: translateY(-5px) translateZ(10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark .input-3d:focus {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* 3D Checkbox */
+.checkbox-3d {
+  perspective: 1000px;
+}
+
+.checkbox-inner {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.checkbox-3d:checked + .checkbox-inner {
+  transform: rotateY(180deg);
+}
+
+.checkbox-front, .checkbox-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 4px;
+}
+
+.checkbox-front {
+  background-color: white;
+  border: 2px solid #d1d5db;
+}
+
+.checkbox-back {
+  background-color: #3b82f6;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* Responsive adjustments for 3D elements */
+@media (max-width: 768px) {
+  .cube-3d, .cube-face {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .cube-face.front {
+    transform: translateZ(75px);
+  }
+  
+  .cube-face.back {
+    transform: rotateY(180deg) translateZ(75px);
+  }
+  
+  .cube-face.right {
+    transform: rotateY(90deg) translateZ(75px);
+  }
+  
+  .cube-face.left {
+    transform: rotateY(-90deg) translateZ(75px);
+  }
+  
+  .cube-face.top {
+    transform: rotateX(90deg) translateZ(75px);
+  }
+  
+  .cube-face.bottom {
+    transform: rotateX(-90deg) translateZ(75px);
+  }
+  
+  .spinning-plate-3d, .plate-top, .plate-side {
+    width: 150px;
+  }
+  
+  .plate-top {
+    height: 150px;
+  }
+  
+  .plate-side {
+    height: 15px;
+    transform: rotateX(0deg) translateY(67.5px);
+  }
+}
+
+@media (max-width: 576px) {
+  .cube-3d, .cube-face {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .cube-face.front {
+    transform: translateZ(50px);
+  }
+  
+  .cube-face.back {
+    transform: rotateY(180deg) translateZ(50px);
+  }
+  
+  .cube-face.right {
+    transform: rotateY(90deg) translateZ(50px);
+  }
+  
+  .cube-face.left {
+    transform: rotateY(-90deg) translateZ(50px);
+  }
+  
+  .cube-face.top {
+    transform: rotateX(90deg) translateZ(50px);
+  }
+  
+  .cube-face.bottom {
+    transform: rotateX(-90deg) translateZ(50px);
+  }
+  
+  .spinning-plate-3d, .plate-top, .plate-side {
+    width: 100px;
+  }
+  
+  .plate-top {
+    height: 100px;
+  }
+  
+  .plate-side {
+    height: 10px;
+    transform: rotateX(0deg) translateY(45px);
+  }
+}
